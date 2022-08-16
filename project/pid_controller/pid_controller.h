@@ -13,22 +13,30 @@ public:
    /**
    * TODO: Create the PID class
    **/
-
+  
     /*
     * Errors
     */
+  	double error;
+  	double prev_cte;
+  	double d_cte;
+  	double sum_cte;
 
     /*
     * Coefficients
     */
-
+	double kp;
+  	double ki;
+  	double kd;
     /*
     * Output limits
     */
-  
+  	double minlimit;
+  	double maxlimit;
     /*
     * Delta time
     */
+  	double deltatime;
 
     /*
     * Constructor

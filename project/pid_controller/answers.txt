@@ -1,7 +1,42 @@
 // Answer the following questions:
 
 // Add the plots to your report and explain them (describe what you see)
+
+All the figures are stored in project folder.
+
 // What is the effect of the PID according to the plots, how each part of the PID affects the control command?
+
+Run1: 
+
+Figure_1.png -- shows the steering angle value
+throttle_brake.png -- shows the throttle value
+
+For this run, parameters are: [0.3, 0.00009, 0.3], [0.2, 0.001, 0.07]
+
+For this run, the vehicle remains on the road but drives too slowy and shows some inconsistencies towards the end.
+
+Run 2: 
+
+steering_93.png -- shows the steering angle value
+throttle_93.png -- shows the throttle value
+
+For this run, parameters are: [0.3, 0.000093, 0.3], [0.2, 0.001, 0.07]
+
+For this run, the vehicle moves over the road shoulder slightly, but returns back on the road. Hence, the increasing ki forced a little bit of overshooting.
+
+P (proportional) part is responsible for overshooting the throttle or steering value. Hence, this value cannot be toot high, otherwise the car would move left and right or move too fast. 
+
+D (derivative) part tries to reduce the overshooting, but it may also cause collision with the obstacles. Hence, too low value is not desirable.
+
+I (Integral) value tries to fix the current value to the desired value too fast. Hence, higher value may cause fast change in steering or throttle value. I think I struggled more with I coeffieicent value for steering command.
+
+
 // How would you design a way to automatically tune the PID parameters?
+
+We can use a twiddle for this purpose. It will gradually adjust the value of kp, ki, and kd.
+
 // PID controller is a model free controller, i.e. it does not use a model of the car. Could you explain the pros and cons of this type of controller?
+
+It reduces the complexity as it will consider all the vehicles as same. But the physical properties of the vehicle (length, width, wheel radius, etc) must have impacts on this, hence, we need to tune the PID controller for every vehicle individually. 
+
 // (Optional) What would you do to improve the PID controller?
